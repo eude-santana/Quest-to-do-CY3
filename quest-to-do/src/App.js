@@ -3,9 +3,10 @@ import { useState } from "react";
 import QuestList from "./QuestList";
 
 function App() {
-  const [quests, setQuests] = useState([]);
+  const localQuests = JSON.parse(window.localStorage.getItem("quests")) || [];
+  const [quests, setQuests] = useState(localQuests);
 
-  function saveAddQuest(title) { 
+  function saveAddQuest(title) {
     let auxQuests = quests;
     let id = 0;
     if(auxQuests.length) {

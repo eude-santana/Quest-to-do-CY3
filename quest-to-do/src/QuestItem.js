@@ -19,6 +19,18 @@ export default function QuestItem({ props }) {
                     {props.quest.title}
                 </p>
             </div>
+
+            {editMode && !concluded ? (
+                <input
+                    placeholder="quest"
+                    defaultValue={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    className="rounded-full bg-secundary pl-2 w-full input-sm flex focus:outline-none"
+                />
+            ) : (
+                <p className={`break-words ${concluded ? "line-through" : ""}`}>{props.quest.title}</p>
+            )}
+
             <div className="flex gap-4 w-full sm:w-fit justify-center">
                 <button onClick={() => setEditMode(!editMode)}>Editar</button>
                 <button>Excluir</button>
